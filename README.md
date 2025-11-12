@@ -8,4 +8,4 @@ Open terminal and execute this command : pip install --upgrade pip     then --> 
 clone repo https://github.com/cholakhyanerik/spectre-terminal-automation 
 
 ## Run test/tests
-uv run pytest -v --html=reports/report.html --self-contained-html src\test_open_app.py
+pytest -v --html=reports/report.html --self-contained-html "src\test_open_app.py"

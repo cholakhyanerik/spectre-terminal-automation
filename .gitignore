@@ -1,12 +1,54 @@
-# Python-generated files
+# -----------------------------
+# Python cache and build files
+# -----------------------------
 __pycache__/
-*.py[oc]
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg
+*.egg-info/
 build/
 dist/
 wheels/
-*.egg-info
+.eggs/
 
+# -----------------------------
 # Virtual environments
-.venv
+# -----------------------------
+.venv/
+venv/
+env/
+.env/
+.envs/
+.environments/
 
-reports
+# -----------------------------
+# Test and report artifacts
+# -----------------------------
+reports/
+htmlcov/
+.coverage
+.cache/
+pytest_cache/
+
+# -----------------------------
+# IDE & Editor files
+# -----------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -----------------------------
+# Logs and misc
+# -----------------------------
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+
+# Environment variables
+.env

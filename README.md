@@ -1,0 +1,1 @@
+uv run pytest -v --html=reports/report.html --self-contained-html src\test_open_app.py

@@ -49,6 +49,6 @@ def test_open_maximize_and_add_orderbook_withCoin(app):
     time.sleep(1)
 
     mouse.click(coords=(x, y))
-    time.sleep(10)
+    time.sleep(40)
     # Assert window is still visible after click
     assert main_window.is_visible(), "Main window is not visible"

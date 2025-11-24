@@ -1,62 +1,64 @@
 # src/test_open_app.py
+
 import time
 from pywinauto import mouse
 
+
 def test_open_maximize_and_add_orderbook_withCoin(app):
-    """Open app, maximize window, and click '+ Order Book' text in top-left corner."""
+    """
+    Open app, maximize window, and perform clicks to add an Order Book with coin selection.
+    """
+
+    # --- Initialize main window ---
     main_window = app.window(title_re=".*")
     main_window.wait("visible", timeout=10)
 
-    # Maximize window (using pywinauto method for reliability)
+    # --- Maximize the window ---
     main_window.maximize()
+    time.sleep(4)  # Allow maximize animation to finish
 
-    # Wait for maximize animation
-    time.sleep(4)
-
-
-    # Assert window is still visible after click
-    assert main_window.is_visible(), "Main window is not visible"
-
-
+    assert main_window.is_visible(), "Main window is not visible after maximizing"
     time.sleep(3)
 
-    # Now click '+ Order Book' near the top-left corner
-    centreAddOrderBook = main_window.rectangle()
+    # ---------------------------------------------------------
+    # Click "+ Order Book"
+    # ---------------------------------------------------------
+    rect = main_window.rectangle()
 
-    x = centreAddOrderBook.left + 1000   # 50 pixels from left edge (adjust if needed)
-    y = centreAddOrderBook.top + 580    # 25 pixels from top edge (adjust if needed)
-
+    x = rect.left + 1000
+    y = rect.top + 580
     mouse.click(coords=(x, y))
 
-    # Optional: wait a bit to observe the click effect
     time.sleep(5)
 
-    ################################################################
-    centreAddOrderBookModalCoin = main_window.rectangle()
-    x = centreAddOrderBookModalCoin.left + 942   # 50 pixels from left edge (adjust if needed)
-    y = centreAddOrderBookModalCoin.top + 552    # 25 pixels from top edge (adjust if needed)
+    # ---------------------------------------------------------
+    # Click inside Order Book modal (coin selection)
+    # ---------------------------------------------------------
+    modal_rect = main_window.rectangle()
+
+    modal_x = modal_rect.left + 942
+    modal_y = modal_rect.top + 552
+
     time.sleep(2)
-    mouse.click(coords=(x, y))
-    mouse.click(coords=(x, y))
+    mouse.click(coords=(modal_x, modal_y))
+    mouse.click(coords=(modal_x, modal_y))
+
     time.sleep(5)
-    # Assert window is still visible after click
-    assert main_window.is_visible(), "Main window is not visible"
 
+    assert main_window.is_visible(), "Main window became invisible after coin modal interactions"
 
-    ######################################################################
+    # ---------------------------------------------------------
+    # Click default coin (already selected)
+    # ---------------------------------------------------------
+    default_rect = main_window.rectangle()
 
-    # Now click '+ Order Book' near the top-left corner
-    addDefauledCoinWIchSelected = main_window.rectangle()
+    default_x = default_rect.left + 700
+    default_y = default_rect.top + 845
 
-    x = addDefauledCoinWIchSelected.left + 700   # 50 pixels from left edge (adjust if needed)
-    y = addDefauledCoinWIchSelected.top + 845    # 25 pixels from top edge (adjust if needed)
-
-    mouse.click(coords=(x, y))
-
-    # Optional: wait a bit to observe the click effect
+    mouse.click(coords=(default_x, default_y))
     time.sleep(1)
 
-    mouse.click(coords=(x, y))
+    mouse.click(coords=(default_x, default_y))
     time.sleep(30)
-    # Assert window is still visible after click
-    assert main_window.is_visible(), "Main window is not visible"
+
+    assert main_window.is_visible(), "Main window is not visible after selecting default coin"

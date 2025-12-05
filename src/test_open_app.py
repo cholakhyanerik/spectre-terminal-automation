@@ -15,10 +15,10 @@ def test_open_maximize_and_add_orderbook_withCoin(app):
 
     # --- Maximize the window ---
     main_window.maximize()
-    time.sleep(4)  # Allow maximize animation to finish
+    time.sleep(2)  # Allow maximize animation to finish
 
     assert main_window.is_visible(), "Main window is not visible after maximizing"
-    time.sleep(3)
+    time.sleep(2)
 
     # ---------------------------------------------------------
     # Click "+ Order Book"
@@ -29,7 +29,20 @@ def test_open_maximize_and_add_orderbook_withCoin(app):
     y = rect.top + 580
     mouse.click(coords=(x, y))
 
-    time.sleep(5)
+    time.sleep(2)
+
+
+    # ---------------------------------------------------------
+    # Orderneri qanakic hetoyva click
+    # ---------------------------------------------------------
+    rect = main_window.rectangle()
+
+    x = rect.left + 1150
+    y = rect.top + 680
+    mouse.click(coords=(x, y))
+
+    time.sleep(2)
+
 
     # ---------------------------------------------------------
     # Click inside Order Book modal (coin selection)
@@ -43,7 +56,7 @@ def test_open_maximize_and_add_orderbook_withCoin(app):
     mouse.click(coords=(modal_x, modal_y))
     mouse.click(coords=(modal_x, modal_y))
 
-    time.sleep(5)
+    time.sleep(2)
 
     assert main_window.is_visible(), "Main window became invisible after coin modal interactions"
 

@@ -1,4 +1,4 @@
-# src/test_open_app.py
+# src\test_open_spectre_app_all_flow_test.py
 
 import time
 from pywinauto import mouse

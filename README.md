@@ -7,5 +7,5 @@ Open terminal and execute this command : pip install --upgrade pip     then --> 
 
 clone repo https://github.com/cholakhyanerik/spectre-terminal-automation 
 
-## Run test/tests
-pytest -v --html=reports/report.html --self-contained-html "src\test_open_app.py"
+## Run test/test
+pytest -v -s --html=reports/report.html --self-contained-html src/test_open_meta_app_all_flow_test.py

@@ -13,6 +13,8 @@ def test_only_meta_app(meta_app):
                 print("Нашли окно MetaScalp!")
                 time.sleep(3)
                 main_window.restore()
+                time.sleep(2)
+                main_window.maximize()
                 return
         time.sleep(1)
 

@@ -40,6 +40,7 @@ def test_open_maximize_and_add_orderbook_withCoin(app):
     x = rect.left + 1150
     y = rect.top + 680
     mouse.click(coords=(x, y))
+    mouse.click(coords=(x, y))
 
     time.sleep(2)
 
@@ -72,6 +73,6 @@ def test_open_maximize_and_add_orderbook_withCoin(app):
     time.sleep(1)
 
     mouse.click(coords=(default_x, default_y))
-    time.sleep(30)
+    time.sleep(20)
 
     assert main_window.is_visible(), "Main window is not visible after selecting default coin"

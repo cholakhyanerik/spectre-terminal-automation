@@ -19,3 +19,5 @@ def test_only_meta_app(meta_app):
         time.sleep(1)
 
     raise RuntimeError("Окно MetaScalp не появилось за 25 секунд")
+    time.sleep(5)
+    main_window.close()

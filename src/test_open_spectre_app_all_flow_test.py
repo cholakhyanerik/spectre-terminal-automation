@@ -2,6 +2,7 @@
 
 import time
 from pywinauto import mouse
+from pywinauto.keyboard import send_keys
 
 
 def test_open_maximize_and_add_orderbook_withCoin(app):
@@ -53,13 +54,27 @@ def test_open_maximize_and_add_orderbook_withCoin(app):
     modal_x = modal_rect.left + 942
     modal_y = modal_rect.top + 552
 
-    time.sleep(2)
+    time.sleep(1)
     mouse.click(coords=(modal_x, modal_y))
     mouse.click(coords=(modal_x, modal_y))
 
-    time.sleep(2)
+    time.sleep(3)
 
     assert main_window.is_visible(), "Main window became invisible after coin modal interactions"
+
+    # ---------------------------------------------------------
+    # Search XRP-USDT
+    # ---------------------------------------------------------
+    default_rect = main_window.rectangle()
+
+    search_x = default_rect.left + 1100
+    search_y = default_rect.top + 320
+
+    mouse.click(coords=(search_x, search_y))  # ✅ Correct coordinates
+
+    time.sleep(1)
+    send_keys("XRP-USDT")  # Type the text
+    time.sleep(1)
 
     # ---------------------------------------------------------
     # Click default coin (already selected)
@@ -73,6 +88,6 @@ def test_open_maximize_and_add_orderbook_withCoin(app):
     time.sleep(1)
 
     mouse.click(coords=(default_x, default_y))
-    time.sleep(20)
+    time.sleep(10)
 
     assert main_window.is_visible(), "Main window is not visible after selecting default coin"
